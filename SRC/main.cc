@@ -44,37 +44,37 @@ int main()
   
   T.start_time();
   // Solve the given CSP problem
-  M.solve(M.BJ, S, 1, &found);
+  M.solve(&NETWORK::BJ, S, 1, &found);
   cout << "BJ" << endl;
   T.print_time();
 
   T.start_time();
   // Solve the given CSP problem
-  M.solve(M.BM, S, 1, &found);
+  M.solve(&NETWORK::BM, S, 1, &found);
   cout << "BM" << endl;
   T.print_time();
 
   //T.start_time();
   // Solve the given CSP problem
-  //M.solve(M.FC, S, 1, &found);
+  //M.solve(&NETWORK::FC, S, 1, &found);
   //cout << "FC" << endl;
   //T.print_time();
 
   T.start_time();
   // Solve the given CSP problem
-  M.solve(M.BM_BJ, S, 1, &found);
+  M.solve(&NETWORK::BM_BJ, S, 1, &found);
   cout << "BM-BJ" << endl;
   T.print_time();
 
   T.start_time();
   // Solve the given CSP problem
-  M.solve(M.FC_BJ, S, 1, &found);
+  M.solve(&NETWORK::FC_BJ, S, 1, &found);
   cout << "FC-BJ" << endl;
   T.print_time();
 
   T.start_time();
   // Solve the given CSP problem
-  M.solve(M.CBJ, S, 1, &found);
+  M.solve(&NETWORK::CBJ, S, 1, &found);
   cout << "CBJ" << endl;
   T.print_time();
 
