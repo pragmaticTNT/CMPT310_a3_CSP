@@ -1,0 +1,45 @@
+Assignment 3 Edits
+==============================================================
+Sure there are no error he says, it compiles fine he says
+well whatever his magical computer power are I am not capable 
+of reproducing such wizardry, so below is a list of fixes.
+==============================================================
+1. (global.h) Lines 15:17
+	Add int type to const variables VAR, DOMS, N
+
+2. (stack_two.cc) Lines multiple
+	All instances where of calling new on a int pointer
+	have had their parenthesis removed. This is due
+	to the newer version of g++. WARNING: this might 
+	not actually work, as several bug reports show
+	that this might be an ongoing issue. E.g
+		stack2 = (int **) new (int*)[k]; //became:
+		stack2 = (int **) new int*[k]
+
+3. (constraint.cc) Lines multiple 
+	See 2.
+
+4. (network.cc) Lines multiple
+	See 2. 
+
+5. (timer_2.cc) Lines 2
+	Add int type to MAXSTRING. See 1.
+
+6. (limit.cc) Line 33
+	Add void return type of function  set_limit
+
+7. (limit.cc) Line 11
+	Nope, in the function expire(...) get rid of the ellipes and add an int variable.
+	everything else should be fine so yes in line 55 it IS expire.
+	
+8. (sfs.cc) Line 5
+	See 5. 
+9. (solve.cc) Line 16
+	OPEN: a "call pointer-to-member function" needs 	pointers and self reference.
+		method(solution, 1, number, found) //original
+		//OUTPUT: must use '.*' or '->*' to call pointer-to-member function in 'method(...)', e.g. '(... ->* method)(...)'
+		(this->*method)(solution, 1, number, found); 
+	
+	CURRENTLY TRYING: 
+		(*method)(solution, 1, number, found); //Nope
+	

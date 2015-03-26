@@ -1,0 +1,29 @@
+
+  15-Queens Problem
+  no preprocessing
+  multiple solutions
+
+BT
+  Number of solutions found in 15 seconds:  134
+
+BJ
+  Number of solutions found in 15 seconds:  389
+
+BM
+  Number of solutions found in 15 seconds: 1294
+
+FC
+  Number of solutions found in 15 seconds:  488
+
+BM-BJ
+  Number of solutions found in 15 seconds: 1478
+
+FC-BJ
+  Number of solutions found in 15 seconds:  452
+
+CBJ
+  Number of solutions found in 15 seconds:  161
+
+  Solution found: 
+  1 3 5 7 9 14 12 2 15 8 6 4 10 13 11 
+

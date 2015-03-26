@@ -1,0 +1,26 @@
+
+  30-Queens Problem
+  no preprocessing
+  single solution
+
+BT
+  User time:  -331.2 seconds
+  Real time: 69331.0 seconds
+
+BJ
+  User time:  1308.9 seconds
+  Real time: 28786.0 seconds
+
+BM
+  User time:  768.7 seconds
+  Real time: 5294.0 seconds
+
+FC
+  User time:  1061.1 seconds
+  Real time: 18812.0 seconds
+
+BM-BJ
+  User time:   96.3 seconds
+  Real time: 4547.0 seconds
+
+FC-BJ

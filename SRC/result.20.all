@@ -1,0 +1,29 @@
+
+  20-Queens Problem
+  no preprocessing
+  multiple solutions
+
+BT
+  Number of solutions found in 300 seconds: 40
+
+BJ
+  Number of solutions found in 300 seconds: 219
+
+BM
+  Number of solutions found in 300 seconds: 1697
+
+FC
+  Number of solutions found in 300 seconds: 292
+
+BM-BJ
+  Number of solutions found in 300 seconds: 2226
+
+FC-BJ
+  Number of solutions found in 300 seconds: 263
+
+CBJ
+  Number of solutions found in 300 seconds: 126
+
+  Solution found: 
+  1 3 5 2 4 13 15 12 18 20 17 9 16 19 10 8 6 14 7 11 
+

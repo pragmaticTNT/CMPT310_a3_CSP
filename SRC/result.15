@@ -1,0 +1,39 @@
+'
+  15-Queens Problem
+  no preprocessing
+  single solution
+
+BT
+  User time: 0.4 seconds
+  Real time: 1.0 seconds
+
+BJ
+  User time: 0.2 seconds
+  Real time: 0.0 seconds
+
+BM
+  User time: 0.1 seconds
+  Real time: 0.0 seconds
+
+FC
+  User time: 0.2 seconds
+  Real time: 0.0 seconds
+
+BM-BJ
+  User time: 0.1 seconds
+  Real time: 1.0 seconds
+
+FC-BJ
+  User time: 0.2 seconds
+  Real time: 0.0 seconds
+
+CBJ
+  User time: 0.3 seconds
+  Real time: 1.0 seconds
+
+
+  Number of solutions found so far: 1
+
+  Solution found: 
+  1 3 5 2 10 12 14 4 13 9 6 15 7 11 8 
+

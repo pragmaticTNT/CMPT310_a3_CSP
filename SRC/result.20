@@ -1,0 +1,39 @@
+
+ 20-Queens Problem
+ no preprocessing
+ single solution
+
+BT
+  User time:  98.2 seconds
+  Real time: 117.0 seconds
+
+BJ
+  User time: 44.8 seconds
+  Real time: 47.0 seconds
+
+BM
+  User time: 13.2 seconds
+  Real time: 14.0 seconds
+
+FC
+  User time: 36.8 seconds
+  Real time: 38.0 seconds
+
+BM-BJ
+  User time: 12.0 seconds
+  Real time: 12.0 seconds
+
+FC-BJ
+  User time: 40.3 seconds
+  Real time: 43.0 seconds
+
+CBJ
+  User time: 61.4 seconds
+  Real time: 64.0 seconds
+
+
+  Number of solutions found so far: 1
+
+  Solution found: 
+  1 3 5 2 4 13 15 12 18 20 17 9 16 19 8 10 7 14 6 11 
+
