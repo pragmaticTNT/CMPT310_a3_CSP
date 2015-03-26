@@ -44,7 +44,7 @@ int main()
   
   T.start_time();
   // Solve the given CSP problem
-  M.solve(&(M.BJ), S, 1, &found);
+  M.solve(M.BJ, S, 1, &found);
   cout << "BJ" << endl;
   T.print_time();
 

@@ -13,5 +13,5 @@
 void NETWORK::solve(int (NETWORK::*method)(SOLUTION,int,int,int *),SOLUTION solution, int number, int *found)
 {
   checks = count = 0;
-  //(this->*method)(solution, 1, number, found);
+  method(solution, 1, number, found);
 }
