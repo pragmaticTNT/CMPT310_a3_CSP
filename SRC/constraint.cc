@@ -79,9 +79,18 @@ char CONSTRAINT::access(int a, int b)
 // print the whole constraint
 void CONSTRAINT::print()
 {
+/*
   for(int a=0; a<k; a++)
     for(int b=0; b<k; b++)
       printf("\n C[%d][%d]= %d ", a, b, C[a][b]);
+*/
+	for(int a = 0; a<k; a++){
+		printf("[ ");
+		for(int b = 0; b<k; b++){
+			printf("%d ", C[a][b]);
+		}
+		printf("]\n");
+	}
 }
 
 // assign a value 0 or 1 to C[a][b]

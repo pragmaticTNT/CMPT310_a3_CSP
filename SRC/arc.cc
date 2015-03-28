@@ -1,4 +1,3 @@
-
 /*
  * This function determines whether given a specific edge, there exists some
  * instantiation for "y" given the instantiation for "x".  It loops through
@@ -21,9 +20,17 @@ int NETWORK::value_arc(int k, int x, int y, int i)
  * from the domain is returned.  Each possible domain value of "x" is
  * considered separately in the loop.
  */
-int NETWORK::revise_arc(int k, int x, int y)
-{
-	return 0;	
+int NETWORK::revise_arc(int k, int x, int y){
+	int i;
+	int delVal = 0;
+	for(i = 0; i < k; i++){
+		if(!value_arc(k, x, y, i)){
+			delVal++;
+			//delete x from the domain	
+			N[x][y].assign(i,i,0);
+		}	
+	}	
+	return delVal;	
 }
 
 
@@ -41,7 +48,26 @@ int NETWORK::revise_arc(int k, int x, int y)
  * its domain values eliminated, this is noted in the constraint C[x][x], by
  * eliminating this value for the original "I" matrix.
  */
-int NETWORK::pre_arc()
-{
-	return 0;
+int NETWORK::pre_arc(){
+	int i, consider;
+	int revised = 0;
+	int k = N[1][1].size();
+	STACK edgeStack;
+	edgeStack.init_stack();
+	//initalize all arcs in the csp
+	for(i = 0; i < k; i++){
+		edgeStack.push(i);
+	} 
+	while(!edgeStack.stack_empty()){
+		edgeStack.pop(&consider);
+		for(i = 0; i < k; i++){
+			if (revise-arc(k, consider, i)){
+				//make sure all domains non-empty
+				if(domEmpty())
+					return 0;
+				edgeStack.push(consider);
+			}	
+		}
+	}
+	return 1;
 }

@@ -28,7 +28,7 @@ void NETWORK::clear_setup_bm(int n, int k)
 int NETWORK::consistent_bm(SOLUTION solution, int current)
 {
   int i;
-  
+	//printf("current: %d\n", current); 
   if (mcl[current][solution[current]] < mbl[current])
     return(0);
   for (i = mbl[current]; i < current; i++) 

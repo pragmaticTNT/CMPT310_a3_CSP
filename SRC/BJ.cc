@@ -47,8 +47,8 @@ int NETWORK::consistent_bj(SOLUTION solution, int current)
 // instantiation of the variable.  For each domain value, perform the following
 // steps.  First, if preprocessing eliminated the value, disregard the rest of
 // the loop.  Otherwise, instantiate the variable, check if the network is
-// still consistent, and then call the backtracking routine recursively.  After
-//checking all possible domain values, use jump_place to return the variable
+// still consistent, and then call the backjumping routine recursively.  After
+// checking all possible domain values, use jump_place to return the variable
 // to which the algorithm should jump back.
 // ****************************************************************************
 
@@ -56,6 +56,10 @@ int NETWORK::BJ(SOLUTION solution, int current, int number, int *found)
 {
   int i, jump;
   int k = N[1][1].size();
+	//for (i = 0; i<n; i++)
+	//	printf("%d ", solution[i]);
+	//printf("\n");
+	printf("current: %d\n", current);
 
   jump_place[current] = 0;
   if (current == 1)

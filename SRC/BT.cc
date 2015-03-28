@@ -27,10 +27,28 @@ int NETWORK::consistent_bt( SOLUTION solution, int current )
 // method (BT).
 // ************************************************************************
 
-int NETWORK::BT( SOLUTION solution, int current, int number, int *found )
-{
-  int i;
-  int k = N[1][1].size();
-  return(0);
+int NETWORK::BT( SOLUTION solution, int current, int number, int *found ){
+	int i;
+	int k = N[1][1].size();
+	printf("current: %d\n", current);
+	if (current > n){
+		process_solution(solution);
+		*found = 1;
+		if (count == 0)
+			sfs(solution);
+		count++;
+		return number == 1 ? 1: 0;
+	}	
+	if (time_expired())
+		return 0;
+	for (i = 0; i < k; i++){
+		if (N[current][current].access(i,i) == 1){
+			solution[current] = i;
+			if (consistent_bt(solution, current)){
+				if(BT(solution, current+1, number, found))
+					return 1; 		
+			}
+		}
+	}
+	return 0;
 }
-

@@ -18,6 +18,8 @@ public:
   char access(char i, char j, char a, char b);
   // print the whole constraint network
   void print();
+  	//print the chess board with pieces in place
+	void printBoard(SOLUTION s);
   // generate the n-queens problem
   void generate_Q();
   // generate a random CSP
@@ -146,4 +148,17 @@ void NETWORK::print()
   for(int i=1; i<=n; i++)
     for(int j=1; j<=n; j++)
       N[i][j].print();
+}
+
+void NETWORK::printBoard(SOLUTION s){
+	for(int i=1; i<=n; i++){
+		printf("[ ");
+		for(int j=0; j<n; j++){
+			if (s[i] != j)
+				printf(". ");
+			else
+				printf("Q ");
+		}
+		printf("]\n");
+	}
 }

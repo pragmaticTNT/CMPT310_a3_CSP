@@ -1,4 +1,3 @@
-
 // Generate the CSP for the n-queens problem.
 // n is the number of variables (rows) 
 // k is the number of values    (columns)
@@ -8,11 +7,10 @@ void NETWORK::generate_Q()
 {
   int i, j, a, b;
   char k = N[1][1].size();
-
   // Initialize the (0-1) matrices.
 
   for( i=1; i<=n; i++ )
-    for( j=1; j<=n; j++ )
+    for( j=1; j<=n; j++ ){
       if( i==j )
 	{
 	  // Diagonal means unary constraints, so initialize 
@@ -36,5 +34,8 @@ void NETWORK::generate_Q()
 	      else
 		N[i][j].assign(a,b,1);
 	 }
+	//printf("N[%d][%d]\n", i, j);
+	//N[i][j].print();
+  }
 }
 
