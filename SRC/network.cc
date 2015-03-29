@@ -74,6 +74,7 @@ public:
 	int value_arc(int k, int x, int y, int i);
 	int revise_arc(int k, int x, int y);
 	int pre_arc();
+	int dom_empty(int x, int k);
 
 	// path consistency algorithms
 	int compose_and_intersect_path(int i, int k, int j, int d );

@@ -5,7 +5,7 @@
 int main()
 {
 
-  const int TIME_LIMIT = 1000000;     // program execution terminates after 
+  const int TIME_LIMIT = 15;     // program execution terminates after 
                              // TIME_LIMIT seconds
 
   //  CONSTRAINT A(10);      // invoke the constructor for CONSTRAINT
@@ -49,20 +49,20 @@ int main()
   cout << "BJ" << endl;
   T.print_time();
 
-*/
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::BM, S, 1, &found);
   cout << "BM" << endl;
   T.print_time();
+*/
+
+  T.start_time();
+  // Solve the given CSP problem
+  M.solve(&NETWORK::FC, S, 1, &found);
+  cout << "FC" << endl;
+  T.print_time();
 
 /*
-  //T.start_time();
-  // Solve the given CSP problem
-  //M.solve(&NETWORK::FC, S, 1, &found);
-  //cout << "FC" << endl;
-  //T.print_time();
-
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::BM_BJ, S, 1, &found);

@@ -59,7 +59,7 @@ int NETWORK::BJ(SOLUTION solution, int current, int number, int *found)
 	//for (i = 0; i<n; i++)
 	//	printf("%d ", solution[i]);
 	//printf("\n");
-	printf("current: %d\n", current);
+	//printf("current: %d\n", current);
 
   jump_place[current] = 0;
   if (current == 1)

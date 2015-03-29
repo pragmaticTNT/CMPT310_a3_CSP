@@ -27,7 +27,9 @@ int NETWORK::revise_arc(int k, int x, int y){
 		if(!value_arc(k, x, y, i)){
 			delVal++;
 			//delete x from the domain	
-			N[x][y].assign(i,i,0);
+			N[x][x].assign(i,i,0);
+			//hum... maybe not
+			domains[x][i] = y;
 		}	
 	}	
 	return delVal;	
@@ -49,25 +51,41 @@ int NETWORK::revise_arc(int k, int x, int y){
  * eliminating this value for the original "I" matrix.
  */
 int NETWORK::pre_arc(){
-	int i, consider;
-	int revised = 0;
+	int i, y, x;
 	int k = N[1][1].size();
 	STACK edgeStack;
 	edgeStack.init_stack();
+
 	//initalize all arcs in the csp
-	for(i = 0; i < k; i++){
-		edgeStack.push(i);
-	} 
+	for(x = 0; x < k; x++)
+		edgeStack.push(x);
+	printf("In stack.\n");
 	while(!edgeStack.stack_empty()){
-		edgeStack.pop(&consider);
-		for(i = 0; i < k; i++){
-			if (revise-arc(k, consider, i)){
-				//make sure all domains non-empty
-				if(domEmpty())
+		edgeStack.pop(x);
+		for(y = 0; y < k; y++){
+			if (revise_arc(k, x, y)){
+				printf("Revising: k(%d), x(%d), y(%d)\n", k, x, y);
+				//make sure domains non-empty
+				if(dom_empty(x, k))
 					return 0;
-				edgeStack.push(consider);
+
+				//push incoming edges
+				for(i = 0; i < k; i++)
+					if(i != x)
+						edgeStack.push(i);
 			}	
 		}
 	}
+	printf("Out of stacks.\n");
 	return 1;
+}
+
+//Returns 1 if domain is empty, returns 0 otherwise
+int NETWORK::dom_empty(int x, int k){
+	int i;
+	for (i = 0; i < k; i++){
+		if(N[k][k].access(i,i) == 1)
+			return 0;
+	}
+	return 0;
 }

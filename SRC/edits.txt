@@ -35,11 +35,58 @@ of reproducing such wizardry, so below is a list of fixes.
 8. (sfs.cc) Line 5
 	See 5. 
 9. (solve.cc) Line 16
-	OPEN: a "call pointer-to-member function" needs 	pointers and self reference.
-		method(solution, 1, number, found) //original
-		//OUTPUT: must use '.*' or '->*' to call pointer-to-member function in 'method(...)', e.g. '(... ->* method)(...)'
-		(this->*method)(solution, 1, number, found); 
+	Some function member calls are wrong. Do this and 10
+		(this->*method)(solution, 1, number, found);
+10. (main.cc & main.all.cc) all member function call of the form: M.method (e.g. M.BT)
+		M.solve(M.BT, S, 1, &found); // original
+		M.solve(&NETWORK::BT, S, 1, &found); //fixed
+
+List of functions in each .cc file:
+===================================
+(1) arc.cc:
+	value_arc(int k, int x, int y, int i)
+	revise_arc(int k, int x, int y)
+	pre_arc()
+	dom_empty(int x)
+
+(2) BJ.cc:
+	clear_setup(int n)
+	consistent_bj(SOLUTION s, int c)
+	BJ(SOLUTION s, int c, int number, int *found)
+
+(3) BM-BJ.cc:
+	clear_setup_bm_bj(int n, int k)
+	consistent_bmbj(SOLUTION s, int c)
+	BM_BJ(SOLUTION s, int c, int number, int *found)
+
+(4) BM.cc:
+	clear_setup_bm(int n, int k)
+	consistent_bm(SOLUTION s, int c)
+	BM(SOLUTION s, int c, int number, int *found)
+
+(5) BT.cc:
+	consistent_bt(SOLUTION s, int c)
+	BT(SOLUTION s, int c, int number, int *found)
 	
-	CURRENTLY TRYING: 
-		(*method)(solution, 1, number, found); //Nope
-	
+(6) CBJ.cc:
+	clear_setup_cbj(int n)
+	union_conflicts(int i, int j)
+	empty_coflicts(int from, int to)
+	consistent_cbj(SOLUTION s, int c)
+	CBJ(SOLUTION s, int c, int number, int *found)
+
+(7) constraint.cc:
+	constraint class
+
+(8) CSP.cc:
+	CSP class
+
+(9) FC-BJ.cc:
+	clear_setup_fc_bj(int n)
+	check_forward_fc_bj(int k, int i, int j, int value)
+	restore_fc_bj(int i, int n, int k)
+	consistent_fc_bj(SOLUTION s, int c)
+	FC_BJ(SOLUTION s, int c, int number, int *found)
+
+(10) 
+		

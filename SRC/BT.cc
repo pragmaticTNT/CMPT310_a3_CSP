@@ -30,14 +30,17 @@ int NETWORK::consistent_bt( SOLUTION solution, int current )
 int NETWORK::BT( SOLUTION solution, int current, int number, int *found ){
 	int i;
 	int k = N[1][1].size();
-	printf("current: %d\n", current);
+	//printf("current: %d\n", current);
 	if (current > n){
 		process_solution(solution);
 		*found = 1;
 		if (count == 0)
 			sfs(solution);
+
+		//printf("\n Solution %d\n", count+1); printBoard(solution);
 		count++;
-		return number == 1 ? 1: 0;
+		//return number == 1 ? n: 0;
+		return number == 1 ? 0: n;
 	}	
 	if (time_expired())
 		return 0;

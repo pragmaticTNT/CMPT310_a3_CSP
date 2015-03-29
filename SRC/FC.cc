@@ -24,10 +24,21 @@ void NETWORK::clear_setup_fc(int n, int k)
 // value in "j" is deleted, this is noted in the "checking" matrix.  The number
 // of values in the domain of "j" after all deletions is returned.
 // ***************************************************************************
-int NETWORK::check_forward(int k, int i, int j, int value)
-{
-  int m, old_count = 0, delete_count = 0;
-  return(old_count - delete_count);
+int NETWORK::check_forward(int k, int i, int j, int value){
+	int m, old_count = 0, delete_count = 0;
+	for(m = 0; m < k; m++){
+		if(N[j][j].access(m,m) && domains[j][m] == 0){
+			old_count++;
+			checks++;
+			if(!N[i][j].access(value, m)){
+				domains[j][m] = i;
+				delete_count++;
+			}
+		}
+	}
+	if(delete_count)
+		checking[i][j] = 1;
+	return(old_count - delete_count);
 }
 
 
@@ -69,7 +80,6 @@ int NETWORK::consistent_fc(int k, int current, int value)
   return(1);
 }
 
-
 // ***************************************************************************
 // Solve the constraint network using the simple FORWARD CHECKING (FC) method.
 // If this is the first variable then initialize the data structures.  If a
@@ -84,9 +94,33 @@ int NETWORK::consistent_fc(int k, int current, int value)
 // checking each domain value, restore the domains which were eliminated by the
 // instantiation.  After checking all possible domain values, return.
 // ***************************************************************************
-int NETWORK::FC(SOLUTION solution, int current, int number, int *found)
-{
-  int i;
-  int k = N[1][1].size();
-  return 0;
+int NETWORK::FC(SOLUTION solution, int current, int number, int *found){
+	int i;
+	int k = N[1][1].size();
+	//Add your code here
+	if(current == 1){
+		clear_setup_fc(n, k);
+		*found = 0;
+	}
+	if(current > n){
+		process_solution(solution);
+		*found = 1;
+		if(count == 0)
+			sfs(solution);
+		count++;	
+		return number == 1 ? 0: n;
+	}
+	if(time_expired() || !pre_arc())
+	//if(time_expired())
+		return 0;
+	for(i = 0; i < k; i++){
+		if(N[current][current].access(i,i) == 1){
+			solution[current] = i;
+			if(consistent_fc(k, current, solution[current]))
+				if(FC(solution, current + 1, number, found))
+					return 1;	
+			restore(current, n, k);
+		}
+	}
+	return 0;
 }

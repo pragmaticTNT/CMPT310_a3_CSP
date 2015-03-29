@@ -42,8 +42,6 @@ int NETWORK::check_forward_fc_bj( int k, int i, int j, int value)
   return(old_count - delete_count);
 }
 
-
-
 // ****************************************************************************
 // Function to restore the domain of variables which were eliminated due to the
 // instantiation of variable "i".  A variable is known to have had a value
