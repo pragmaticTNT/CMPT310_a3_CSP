@@ -110,11 +110,12 @@ int NETWORK::FC(SOLUTION solution, int current, int number, int *found){
 		count++;	
 		return number == 1 ? 0: n;
 	}
-	if(time_expired() || !pre_arc())
-	//if(time_expired())
+	//if(time_expired() || !pre_arc()){
+	if(time_expired()){
 		return 0;
+	}
 	for(i = 0; i < k; i++){
-		if(N[current][current].access(i,i) == 1){
+		if(N[current][current].access(i,i) && !domains[current][i]){
 			solution[current] = i;
 			if(consistent_fc(k, current, solution[current]))
 				if(FC(solution, current + 1, number, found))

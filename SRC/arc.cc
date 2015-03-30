@@ -6,10 +6,18 @@
 int NETWORK::value_arc(int k, int x, int y, int i)
 {
     int j;
-
+//printf("I do get this far.\n");
     for (j = 0; j < k; j++)
         if (N[x][y].access(i,j) && N[y][y].access(j,j))
             return(1);
+while(1){
+	
+	printf("N[%d][%d]:\n", x, y);
+	N[x][y].print();
+	printf("N[%d][%d]:\n", y, y);
+	N[y][y].print();
+	printf("Not ok: x(%d), y(%d), i(%d)\n", x, y, i);
+}
     return(0);
 }
 
@@ -57,12 +65,11 @@ int NETWORK::pre_arc(){
 	edgeStack.init_stack();
 
 	//initalize all arcs in the csp
-	for(x = 0; x < k; x++)
+	for(x = 1; x <= k; x++)
 		edgeStack.push(x);
-	printf("In stack.\n");
 	while(!edgeStack.stack_empty()){
 		edgeStack.pop(x);
-		for(y = 0; y < k; y++){
+		for(y = 1; y <= k; y++){
 			if (revise_arc(k, x, y)){
 				printf("Revising: k(%d), x(%d), y(%d)\n", k, x, y);
 				//make sure domains non-empty
@@ -76,7 +83,6 @@ int NETWORK::pre_arc(){
 			}	
 		}
 	}
-	printf("Out of stacks.\n");
 	return 1;
 }
 
@@ -87,5 +93,5 @@ int NETWORK::dom_empty(int x, int k){
 		if(N[k][k].access(i,i) == 1)
 			return 0;
 	}
-	return 0;
+	return 1;
 }
