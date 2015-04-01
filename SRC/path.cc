@@ -3,7 +3,6 @@ int NETWORK::compose_and_intersect_path(int i, int k, int j, int d )
 	register int	a, b, c, result;
 	int		changes = 0;
 
-
 	for( a = 0; a < d; a++ )
 	for( b = 0; b < d; b++ ) {
 		if( N[i][j].access(a,b) == 1 ) {

@@ -55,8 +55,8 @@ STACK::STACK(int size): n(size)
 // destructor
 STACK::~STACK()
 {
-	delete []stack;
-	delete []on_stack;
+	delete[] stack;
+	delete[] on_stack;
 }
 
 int STACK::stack_empty()

@@ -35,7 +35,6 @@ int main()
   // Start and initialize timer
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
-/*
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::BT, S, 1, &found);
@@ -43,6 +42,7 @@ int main()
   T.print_time();
 //	M.printBoard(S);
   
+/*
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::BJ, S, 1, &found);
@@ -54,13 +54,13 @@ int main()
   M.solve(&NETWORK::BM, S, 1, &found);
   cout << "BM" << endl;
   T.print_time();
-*/
 
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::FC, S, 1, &found);
   cout << "FC" << endl;
   T.print_time();
+*/
 
 /*
   T.start_time();

@@ -42,8 +42,9 @@ int NETWORK::BT( SOLUTION solution, int current, int number, int *found ){
 		//return number == 1 ? n: 0;
 		return number == 1 ? 0: n;
 	}	
-	if (time_expired())
+	if (time_expired() || !pre_arc())
 		return 0;
+	printf("I make it here!\n");
 	for (i = 0; i < k; i++){
 		if (N[current][current].access(i,i) == 1){
 			solution[current] = i;

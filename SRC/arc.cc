@@ -3,22 +3,13 @@
  * instantiation for "y" given the instantiation for "x".  It loops through
  * all the value of the "y" variable.
  */
-int NETWORK::value_arc(int k, int x, int y, int i)
-{
-    int j;
-//printf("I do get this far.\n");
-    for (j = 0; j < k; j++)
-        if (N[x][y].access(i,j) && N[y][y].access(j,j))
-            return(1);
-while(1){
-	
-	printf("N[%d][%d]:\n", x, y);
-	N[x][y].print();
-	printf("N[%d][%d]:\n", y, y);
-	N[y][y].print();
-	printf("Not ok: x(%d), y(%d), i(%d)\n", x, y, i);
-}
-    return(0);
+int NETWORK::value_arc(int k, int x, int y, int i){
+	int j;
+	for(j = 0; j < k; j++){
+        	if (N[x][y].access(i,j) && N[y][y].access(j,j))
+            		return 1;
+	}
+	return 0;
 }
 
 
@@ -29,15 +20,15 @@ while(1){
  * considered separately in the loop.
  */
 int NETWORK::revise_arc(int k, int x, int y){
-	int i;
+	int i, j;
 	int delVal = 0;
 	for(i = 0; i < k; i++){
+		printf("Values are: k(%d) x(%d) y(%d) i(%d)\n", k, x, y, i);
 		if(!value_arc(k, x, y, i)){
 			delVal++;
 			//delete x from the domain	
 			N[x][x].assign(i,i,0);
-			//hum... maybe not
-			domains[x][i] = y;
+			//domains[x][i] = y;
 		}	
 	}	
 	return delVal;	
@@ -59,39 +50,35 @@ int NETWORK::revise_arc(int k, int x, int y){
  * eliminating this value for the original "I" matrix.
  */
 int NETWORK::pre_arc(){
-	int i, y, x;
+	int i, j, y, x, count;
 	int k = N[1][1].size();
+
 	STACK edgeStack;
 	edgeStack.init_stack();
 
 	//initalize all arcs in the csp
-	for(x = 1; x <= k; x++)
+	for(x = 1; x <= n; x++)
 		edgeStack.push(x);
+
 	while(!edgeStack.stack_empty()){
 		edgeStack.pop(x);
-		for(y = 1; y <= k; y++){
+		for(y = 1; y <= n; y++){
 			if (revise_arc(k, x, y)){
-				printf("Revising: k(%d), x(%d), y(%d)\n", k, x, y);
-				//make sure domains non-empty
-				if(dom_empty(x, k))
-					return 0;
-
 				//push incoming edges
-				for(i = 0; i < k; i++)
+				for(i = 1; i <= n; i++)
 					if(i != x)
 						edgeStack.push(i);
 			}	
 		}
 	}
-	return 1;
-}
 
-//Returns 1 if domain is empty, returns 0 otherwise
-int NETWORK::dom_empty(int x, int k){
-	int i;
-	for (i = 0; i < k; i++){
-		if(N[k][k].access(i,i) == 1)
+	for(x = 1; x <= n; x++){
+		count = 0;
+		for(j = 0; j < k; j++)
+			count += N[x][x].access(j,j);
+		if(!count)
 			return 0;
 	}
+	printf("I get out\n");
 	return 1;
 }
