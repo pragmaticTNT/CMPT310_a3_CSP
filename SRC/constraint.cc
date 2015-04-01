@@ -18,11 +18,11 @@ public:
   // print the whole contraint
   void print();
   // assign a value 0 or 1 to C[a][b]
-  void assign(int a, int b, char value);
+  void assign(int a, int b, int value);
 
 
 private:
-  char **C;    // CONSTRAINT c as a 2D array structure
+  int **C;    // CONSTRAINT c as a 2D array structure
   int k;      // size of the CONSTRAINT
 };
 
@@ -30,11 +30,11 @@ private:
 // default constructor
 CONSTRAINT::CONSTRAINT(): k(DOMS)
 {
-  C = new char*[k];
+  C = new int*[k];
   assert (C != 0);
   for(int i=0; i<k; i++)
     {
-      C[i] = new char[k];
+      C[i] = new int[k];
       assert(C[i] != 0);
     }
 }
@@ -47,11 +47,11 @@ CONSTRAINT::CONSTRAINT(int size): k(size)
       cerr << "Illegal CONSTRAINT size" << size << endl;
       exit(1);
     }
-  C = new char*[k];
+  C = new int*[k];
   assert (C != 0);
   for(int i=0; i<k; i++)
     {
-      C[i] = new char[k];
+      C[i] = new int[k];
       assert(C[i] != 0);
     }
 }
@@ -94,7 +94,7 @@ void CONSTRAINT::print()
 }
 
 // assign a value 0 or 1 to C[a][b]
-void CONSTRAINT::assign(int a, int b, char value)
+void CONSTRAINT::assign(int a, int b, int value)
 {
   if ( a < 0 || a > (k-1) || b < 0 || b > (k-1) )
     {

@@ -5,7 +5,7 @@
 int main()
 {
 
-  const int TIME_LIMIT = 15;     // program execution terminates after 
+  const int TIME_LIMIT = 1000;     // program execution terminates after 
                              // TIME_LIMIT seconds
 
   //  CONSTRAINT A(10);      // invoke the constructor for CONSTRAINT
@@ -28,6 +28,7 @@ int main()
 
   // generate an N-queens problem
   M.generate_Q();
+  M.pre_arc();
   //M.print();
 
   cout << endl << "  " << VARS << "-Queens Problem" << endl << endl;
@@ -35,6 +36,7 @@ int main()
   // Start and initialize timer
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
+/*
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::BT, S, 1, &found);
@@ -42,7 +44,6 @@ int main()
   T.print_time();
 //	M.printBoard(S);
   
-/*
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::BJ, S, 1, &found);
@@ -54,13 +55,13 @@ int main()
   M.solve(&NETWORK::BM, S, 1, &found);
   cout << "BM" << endl;
   T.print_time();
+*/
 
   T.start_time();
   // Solve the given CSP problem
   M.solve(&NETWORK::FC, S, 1, &found);
   cout << "FC" << endl;
   T.print_time();
-*/
 
 /*
   T.start_time();

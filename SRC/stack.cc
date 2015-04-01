@@ -32,7 +32,7 @@ STACK::STACK(): n(VARS+1)
 {
 	stack = (int *)new int[n];
 	assert(stack != 0);
-	on_stack = (int *)new int[n];
+	on_stack = (int *)new int[n+1];
 	assert(on_stack != 0);
 	top = 0;
 }
@@ -47,7 +47,7 @@ STACK::STACK(int size): n(size)
 	}
 	stack = (int *)new int[n];
 	assert(stack != 0);
-	on_stack = (int *)new int[n];
+	on_stack = (int *)new int[n+1];
 	assert(on_stack != 0);
 	top = 0;
 }	
@@ -66,7 +66,6 @@ int STACK::stack_empty()
 
 void STACK::init_stack()
 {
-	top = 0;
 	for (int i=1 ; i <= n ;i++)
 		on_stack[i] = 0;
 	return;

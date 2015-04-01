@@ -23,12 +23,12 @@ int NETWORK::revise_arc(int k, int x, int y){
 	int i, j;
 	int delVal = 0;
 	for(i = 0; i < k; i++){
-		printf("Values are: k(%d) x(%d) y(%d) i(%d)\n", k, x, y, i);
+	//	printf("Values are: k(%d) x(%d) y(%d) i(%d)\n", k, x, y, i);
 		if(!value_arc(k, x, y, i)){
 			delVal++;
 			//delete x from the domain	
 			N[x][x].assign(i,i,0);
-			//domains[x][i] = y;
+			domains[x][i] = y;
 		}	
 	}	
 	return delVal;	
@@ -57,7 +57,7 @@ int NETWORK::pre_arc(){
 	edgeStack.init_stack();
 
 	//initalize all arcs in the csp
-	for(x = 1; x <= n; x++)
+	for(x = n; x >= 1; x--)
 		edgeStack.push(x);
 
 	while(!edgeStack.stack_empty()){
@@ -66,8 +66,10 @@ int NETWORK::pre_arc(){
 			if (revise_arc(k, x, y)){
 				//push incoming edges
 				for(i = 1; i <= n; i++)
-					if(i != x)
+					if(i != x){
 						edgeStack.push(i);
+						printf("pushing edge %d\n", i);
+					}
 			}	
 		}
 	}
@@ -79,6 +81,6 @@ int NETWORK::pre_arc(){
 		if(!count)
 			return 0;
 	}
-	printf("I get out\n");
+//	printf("I get out\n");
 	return 1;
 }

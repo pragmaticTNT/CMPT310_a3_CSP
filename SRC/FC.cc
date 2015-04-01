@@ -108,7 +108,7 @@ int NETWORK::FC(SOLUTION solution, int current, int number, int *found){
 		if(count == 0)
 			sfs(solution);
 		count++;	
-		return number == 1 ? 0: n;
+		return number == 1 ? 1: n;
 	}
 	//if(time_expired() || !pre_arc()){
 	if(time_expired()){

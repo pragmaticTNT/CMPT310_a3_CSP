@@ -12,7 +12,7 @@ using namespace std;
 // ********************************************************************
 typedef enum type_timer {REAL, VIRTUAL} TIMER_TYPE;
 
-const int VARS = 25;
+const int VARS = 39;
 const int DOMS = VARS; 
 const int N    = VARS+1;
 

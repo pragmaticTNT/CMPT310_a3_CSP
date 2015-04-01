@@ -15,7 +15,7 @@ public:
   // Return the size of the network
   int size() { return(n); }
   // Access the constraint on variables i and j for values a and b
-  char access(char i, char j, char a, char b);
+  char access(int i, int j, int a, int b);
   // print the whole constraint network
   void print();
   	//print the chess board with pieces in place
@@ -131,7 +131,7 @@ NETWORK::~NETWORK()
 }
       
 // Access the constraint on variables i and j for values a and b
-char NETWORK::access(char i, char j, char a, char b)
+char NETWORK::access(int i, int j, int a, int b)
 {
   if ( i < 1 || i > n || j < 1 || j > n )
     {

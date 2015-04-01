@@ -36,7 +36,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.BT, S, 2, &found);
+  M.solve(&NETWORK::BT, S, 2, &found);
   cout << "BT" <<endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl;
@@ -45,7 +45,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.BJ, S, 2, &found);
+  M.solve(&NETWORK::BJ, S, 2, &found);
   cout << "BJ" << endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl;
@@ -54,7 +54,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.BM, S, 2, &found);
+  M.solve(&NETWORK::BM, S, 2, &found);
   cout << "BM" << endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl;
@@ -63,7 +63,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.FC, S, 2, &found);
+  M.solve(&NETWORK::FC, S, 2, &found);
   cout << "FC" << endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl;
@@ -72,7 +72,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.BM_BJ, S, 2, &found);
+  M.solve(&NETWORK::BM_BJ, S, 2, &found);
   cout << "BM-BJ" << endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl; 
@@ -81,7 +81,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.FC_BJ, S, 2, &found);
+  M.solve(&NETWORK::FC_BJ, S, 2, &found);
   cout << "FC-BJ" << endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl;
@@ -90,7 +90,7 @@ int main()
   start_timers();
   set_limit( VIRTUAL, TIME_LIMIT );
   // Solve the given CSP problem
-  M.solve(M.CBJ, S, 2, &found);
+  M.solve(&NETWORK::CBJ, S, 2, &found);
   cout << "CBJ" << endl;
   cout << "  Number of solutions found in " << TIME_LIMIT << " seconds: "
     << count << endl << endl;
